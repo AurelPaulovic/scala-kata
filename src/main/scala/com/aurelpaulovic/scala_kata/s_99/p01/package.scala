@@ -10,6 +10,7 @@ package com.aurelpaulovic.scala_kata.s_99
 
 import scala.annotation.tailrec
 
+
 package object p01 {
 	/**
 	 * Gets the last element of the list using built-in
