@@ -13,7 +13,7 @@ import scala.annotation.tailrec
 
 package object p01 {
 	/**
-	 * Gets the last element of the list using built-in
+	 * Gets the last element of a list using built-in
 	 * 
 	 * @param ls the list
 	 */
@@ -21,7 +21,7 @@ package object p01 {
 	
 	
 	/**
-	 * Gets the last element of the list using tail-recursive inner function
+	 * Gets the last element of a list using tail-recursive inner function
 	 * 
 	 * @param ls the list
 	 */
@@ -39,14 +39,14 @@ package object p01 {
 	}
 	
 	/**
-	 * Gets the last element of the list reversing the list first and then returning the head of the reversed list
+	 * Gets the last element of a list reversing the list first and then returning the head of the reversed list
 	 * 
 	 * @param ls the list
 	 */
 	def last03[A](ls: List[A]) = ls.reverse.head
 	
 	/**
-	 * Gets the last element of the list by "directly" accessing the last element
+	 * Gets the last element of a list by "directly" accessing the last element
 	 * 
 	 * @param ls the list
 	 */
@@ -58,7 +58,7 @@ package object p01 {
 	}
 	
 	/**
-	 * Gets the last element of the list using foldLeft
+	 * Gets the last element of a list using foldLeft
 	 * 
 	 * @param ls the list
 	 */
@@ -72,7 +72,7 @@ package object p01 {
 	}
 	
 	/**
-	 * Gets the last element of the list using foldRight
+	 * Gets the last element of a list using foldRight
 	 */
 	def last06[A](ls: List[A]) = {
 	  ls.foldRight(None: Option[A]) { (a, b) => b match {
@@ -84,7 +84,56 @@ package object p01 {
 	  }
 	}
 	
+	/**
+	 * Gets the last element of a list using a for loop with options
+	 * 
+	 * @param ls the list
+	 */
+	def last07[A](ls: List[A]) = {
+	  var ret: Option[A] = None //we use option, so we can differentiate between no value (if the list was empty) and a value from list
+	  for(x <- ls) ret = Some(x)
+	  
+	  ret match {
+	    case None => throw new NoSuchElementException
+	    case Some(x) => x
+	  }
+	}
+	
+	/**
+	 * Gets the last element of a list using a for loop with flag
+	 * 
+	 * @param ls the list
+	 */
+	def last08[A](ls: List[A]) = {
+	  var ret: A = null.asInstanceOf[A]
+	  var found = false 
+	  for(x <- ls) { //same way as last07 but instead of options (and having to instantiate an option with each iteration, we have a flag
+	    found = true
+	    ret = x
+	  }
+	  
+	  if(!found) throw new NoSuchElementException
+	  ret
+	}
+	
+	/**
+	 * Gets the last element of a list using an iterator
+	 * 
+	 * @param ls the list
+	 */
+	def last09[A](ls: List[A]) = {
+	  /* let us do quick test first so that we do not have to use options or flags
+	   * !! length might be O(n) ... depends on the implementation -> we better just test if there is at least one element
+	   */
+	  ls.head // will throw NoSucheElementException for us if the list is empty
+	  
+	  val iter = ls.iterator
+	  var ret: A = null.asInstanceOf[A]
+	  while(iter.hasNext) ret = iter.next
+	  
+	  ret
+	}
+	
 // TODO:
-// last using loop with iterator
 // recursion using trampoline
 }

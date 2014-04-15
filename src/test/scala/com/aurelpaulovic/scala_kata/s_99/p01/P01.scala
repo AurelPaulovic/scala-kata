@@ -16,6 +16,9 @@ class P01 extends UnitSpec {
 	  assert(last04(list) === 6)
 	  assert(last05(list) === 6, "last05")
 	  assert(last06(list) === 6, "last06")
+	  assert(last07(list) === 6, "last07")
+	  assert(last08(list) === 6, "last08")
+	  assert(last09(list) === 6, "last09")
 	}
 	
 	"A last" should "should throw a NoSuchElementException of an empty-list" in {
@@ -43,6 +46,18 @@ class P01 extends UnitSpec {
 	  intercept[NoSuchElementException] {
 	    last06(list)
 	  }
+	  
+	  intercept[NoSuchElementException] {
+	    last07(list)
+	  }
+	  
+	  intercept[NoSuchElementException] {
+	    last08(list)
+	  }
+	  
+	  intercept[NoSuchElementException] {
+	    last09(list)
+	  }
 	}
 	
 	"A last" should "should return the only element of a list with a single element" in {
@@ -54,5 +69,8 @@ class P01 extends UnitSpec {
 	  assert(last04(list) === 2)
 	  assert(last05(list) === 2)
 	  assert(last06(list) === 2)
+	  assert(last07(list) === 2)
+	  assert(last08(list) === 2)
+	  assert(last09(list) === 2)
 	}
 }
