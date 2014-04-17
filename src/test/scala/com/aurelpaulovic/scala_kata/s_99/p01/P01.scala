@@ -17,7 +17,8 @@ class P01 extends UnitSpec {
 			("last07", last07(_)),
 			("last08", last08(_)),
 			("last09", last09(_)),
-			("last10", last10(_))
+			("last10", last10(_)),
+			("last11", last11(_))
 		)
 		
 	for((k, f) <- funcs) {

@@ -13,7 +13,7 @@ import scala.util.control.TailCalls._
 
 package object p01 {
 	/**
-	 * Gets the last element of a list using built-in
+	 * Returns the last element of a list using built-in
 	 * 
 	 * @param ls the list
 	 */
@@ -21,7 +21,7 @@ package object p01 {
 	
 	
 	/**
-	 * Gets the last element of a list using tail-recursive inner function
+	 * Returns the last element of a list using tail-recursive inner function
 	 * 
 	 * @param ls the list
 	 */
@@ -39,14 +39,14 @@ package object p01 {
 	}
 	
 	/**
-	 * Gets the last element of a list reversing the list first and then returning the head of the reversed list
+	 * Returns the last element of a list reversing the list first and then returning the head of the reversed list
 	 * 
 	 * @param ls the list
 	 */
 	def last03[A](ls: List[A]) = ls.reverse.head
 	
 	/**
-	 * Gets the last element of a list by "directly" accessing the last element
+	 * Returns the last element of a list by "directly" accessing the last element
 	 * 
 	 * @param ls the list
 	 */
@@ -58,7 +58,7 @@ package object p01 {
 	}
 	
 	/**
-	 * Gets the last element of a list using foldLeft
+	 * Returns the last element of a list using foldLeft
 	 * 
 	 * @param ls the list
 	 */
@@ -72,7 +72,7 @@ package object p01 {
 	}
 	
 	/**
-	 * Gets the last element of a list using foldRight
+	 * Returns the last element of a list using foldRight
 	 */
 	def last06[A](ls: List[A]) = {
 	  ls.foldRight(None: Option[A]) { (a, b) => b match {
@@ -85,7 +85,7 @@ package object p01 {
 	}
 	
 	/**
-	 * Gets the last element of a list using a for loop with options
+	 * Returns the last element of a list using a for loop with options
 	 * 
 	 * @param ls the list
 	 */
@@ -100,7 +100,7 @@ package object p01 {
 	}
 	
 	/**
-	 * Gets the last element of a list using a for loop with flag
+	 * Returns the last element of a list using a for loop with flag
 	 * 
 	 * @param ls the list
 	 */
@@ -117,7 +117,7 @@ package object p01 {
 	}
 	
 	/**
-	 * Gets the last element of a list using an iterator
+	 * Returns the last element of a list using an iterator
 	 * 
 	 * @param ls the list
 	 */
@@ -134,6 +134,11 @@ package object p01 {
 	  ret
 	}
 	
+	/**
+	 * Returns the last element of a list using trampoline
+	 * 
+	 * @param ls the list
+	 */
 	def last10[A](ls: List[A]) = {
 	  def last10Inner[A](ls: List[A]): TailRec[A] = {
 	    ls match {
@@ -144,5 +149,27 @@ package object p01 {
 	  }
 	  
 	  last10Inner(ls).result
+	}
+	
+	/**
+	 * Returns the last element of a list using do-while loop without having to specify a local variable holding the return with a default value  
+	 * 
+	 * @param ls the list
+	 */
+	def last11[A](ls: List[A]) = {
+	  var curls = ls
+	  
+	  do {
+		  curls = curls match {
+		    case Nil => throw new NoSuchElementException
+		    case ele :: Nil => List(ele)
+		    case _ :: tail => tail
+		  }
+	  } while(curls match {
+	    			case List(_) => false
+	    			case _ => true
+  				})
+	  
+	  curls.head
 	}
 }
