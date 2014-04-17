@@ -7,76 +7,42 @@ import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
 class P01 extends UnitSpec {
-	"A last" should "return the last element of a non-empty list" in {
-	  val list = List(1,2,3,4,5,5,6)
-	  
-	  assert(last01(list) === 6)
-	  assert(last02(list) === 6)
-	  assert(last03(list) === 6)
-	  assert(last04(list) === 6)
-	  assert(last05(list) === 6, "last05")
-	  assert(last06(list) === 6, "last06")
-	  assert(last07(list) === 6, "last07")
-	  assert(last08(list) === 6, "last08")
-	  assert(last09(list) === 6, "last09")
-	  assert(last10(list) === 6, "last10")
-	}
-	
-	"A last" should "should throw a NoSuchElementException of an empty-list" in {
-	  val list = List()
-	  
-	  intercept[NoSuchElementException] {
-	    last01(list)
-	  }
-	  intercept[NoSuchElementException] {
-	    last02(list)
-	  }
-	  
-	  intercept[NoSuchElementException] {
-	    last03(list)
-	  }
-	  
-	  intercept[NoSuchElementException] {
-	    last04(list)
-	  }
-	  
-	  intercept[NoSuchElementException] {
-	    last05(list)
-	  }
-	  
-	  intercept[NoSuchElementException] {
-	    last06(list)
-	  }
-	  
-	  intercept[NoSuchElementException] {
-	    last07(list)
-	  }
-	  
-	  intercept[NoSuchElementException] {
-	    last08(list)
-	  }
-	  
-	  intercept[NoSuchElementException] {
-	    last09(list)
-	  }
-	  
-	  intercept[NoSuchElementException] {
-	    last10(list)
+	val funcs: List[(String, List[Int] => Int)] = List( // we could use type Any, but than we would have to assert using == ... I think there is no way to specify it better :(
+			("last01", last01(_)), 
+			("last02", last02(_)), 
+			("last03", last03(_)), 
+			("last04", last04(_)), 
+			("last05", last05(_)),
+			("last06", last06(_)),
+			("last07", last07(_)),
+			("last08", last08(_)),
+			("last09", last09(_)),
+			("last10", last10(_))
+		)
+		
+	for((k, f) <- funcs) {
+	  "A " + k should "return the the last element of a list" in {
+	    val list = List(1,2,3,4,5,5,6)
+	    
+	    assert(f(list) === 6)
 	  }
 	}
 	
-	"A last" should "should return the only element of a list with a single element" in {
-	  val list = List(2)
-	  
-	  assert(last01(list) === 2)
-	  assert(last02(list) === 2)
-	  assert(last03(list) === 2)
-	  assert(last04(list) === 2)
-	  assert(last05(list) === 2)
-	  assert(last06(list) === 2)
-	  assert(last07(list) === 2)
-	  assert(last08(list) === 2)
-	  assert(last09(list) === 2)
-	  assert(last10(list) === 2)
+	for((k, f) <- funcs) {
+	  "A " + k should "should throw a NoSuchElementException of an empty-list" in {
+	    val list = List()
+	    
+	    intercept[NoSuchElementException] {
+	      f(list)
+	    }
+	  }
+	}
+	
+	for((k, f) <- funcs) {
+	  "A " + k should "return the only element of a list with a single element" in {
+	    val list = List(2)
+	    
+	    assert(f(list) === 2)
+	  }
 	}
 }
