@@ -9,7 +9,7 @@ package com.aurelpaulovic.scala_kata.s_99
  */
 
 import scala.annotation.tailrec
-
+import scala.util.control.TailCalls._
 
 package object p01 {
 	/**
@@ -134,6 +134,15 @@ package object p01 {
 	  ret
 	}
 	
-// TODO:
-// recursion using trampoline
+	def last10[A](ls: List[A]) = {
+	  def last10Inner[A](ls: List[A]): TailRec[A] = {
+	    ls match {
+	      case Nil => throw new NoSuchElementException
+	      case x :: Nil => done(x)
+	      case _ :: tail => tailcall(last10Inner(tail))
+	    }
+	  }
+	  
+	  last10Inner(ls).result
+	}
 }
