@@ -61,4 +61,18 @@ package object p02 {
 	  if(ls.isEmpty) throw new NoSuchElementException
 	  ls.init.last
 	}
+	
+	/**
+	 * Return the last but one element of a list using a sliding iterator
+	 * 
+	 * @param ls the list
+	 */
+	def lastButOne06[A](ls: List[A]) = {
+	  val iter = ls.sliding(2)
+	  var window: List[A] = null
+	  while(iter.hasNext) window = iter.next
+	  
+	  if(window != null && window.size == 2) window.head
+	  else throw new NoSuchElementException
+	}
 }
