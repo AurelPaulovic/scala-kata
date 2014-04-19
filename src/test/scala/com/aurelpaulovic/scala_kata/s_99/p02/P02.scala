@@ -11,7 +11,8 @@ class P02 extends UnitSpec {
 			("lastButOne01", lastButOne01(_)),
 			("lastButOne02", lastButOne02(_)),
 			("lastButOne03", lastButOne03(_)),
-			("lastButOne04", lastButOne04(_))
+			("lastButOne04", lastButOne04(_)),
+			("lastButOne05", lastButOne05(_))
 		)
 		
 	for((k, f) <- funcs) {

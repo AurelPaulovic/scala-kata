@@ -52,4 +52,14 @@ package object p02 {
 	 * @param ls the list
 	 */
 	def lastButOne04[A](ls: List[A]) = ls.dropRight(1).last
+	
+	/**
+	 * Returns the last but one element of a list by returning the last element of a init on a list
+	 * 
+	 * @param ls the list
+	 */
+	def lastButOne05[A](ls: List[A]) = {
+	  if(ls.isEmpty) throw new NoSuchElementException
+	  ls.init.last
+	}
 }
