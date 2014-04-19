@@ -19,10 +19,9 @@ package object p02 {
 	def lastButOne01[A](ls: List[A]) = {
 	  @tailrec
 	  def lastButOneInner[A](ls: List[A]): A = ls match {
-	    case Nil => throw new NoSuchElementException
-	    case last :: Nil => throw new NoSuchElementException
-	    case ele :: _ :: Nil => ele
-	    case newEle :: (tail @ List(x, _*)) => lastButOneInner(tail)
+	  	case ele :: _ :: Nil => ele
+	  	case _ :: tail => lastButOneInner(tail)
+	  	case _ => throw new NoSuchElementException
 	  }
 	  
 	  lastButOneInner(ls) 
