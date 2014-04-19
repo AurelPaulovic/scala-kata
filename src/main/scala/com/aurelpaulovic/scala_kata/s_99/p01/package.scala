@@ -152,7 +152,7 @@ package object p01 {
 	}
 	
 	/**
-	 * Returns the last element of a list using do-while loop without having to specify a local variable holding the return with a default value  
+	 * Returns the last element of a list using do-while loop without having to specify a local variable holding the return value with a default value  
 	 * 
 	 * @param ls the list
 	 */
