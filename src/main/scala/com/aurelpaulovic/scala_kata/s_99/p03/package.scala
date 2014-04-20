@@ -11,8 +11,20 @@ package com.aurelpaulovic.scala_kata.s_99
 import scala.annotation.tailrec
 
 package object p03 {
+    /**
+     * Returns the nth element of a list using built-in
+     * 
+     * @param n the index of the element (starting from 0)
+	 * @param ls the list
+     */
 	def nth01[A](n: Int, ls: List[A]) = ls(n)
 	
+	/**
+	 * Returns the nth element of a list using tail recursion
+	 * 
+	 * @param n the index of the element (starting from 0)
+	 * @param ls the list
+	 */
 	@tailrec
 	def nth02[A](n: Int, ls: List[A]): A = {
 	  if(ls.isEmpty || n < 0) throw new IndexOutOfBoundsException
@@ -22,6 +34,12 @@ package object p03 {
 	  }
 	}
 	
+	/**
+	 * Return the nth element of a list using tail recursion and pattern matching
+	 * 
+	 * @param n the index of the element (starting from 0)
+	 * @param ls the list
+	 */
 	@tailrec
 	def nth03[A](n: Int, ls: List[A]): A = (n, ls) match {
 	  case (0, ele :: _) => ele
