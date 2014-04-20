@@ -10,7 +10,8 @@ class P03 extends UnitSpec {
 	val funcs: List[(String, (Int, List[Int]) => Int)] = List( // we could use type Any, but than we would have to assert using == ... I think there is no way to specify it better :(
 			("nth01", nth01(_,_)),
 			("nth02", nth02(_,_)),
-			("nth03", nth03(_,_))
+			("nth03", nth03(_,_)),
+			("nth04", nth04(_,_))
 		)
 		
 	for((k, f) <- funcs) {
