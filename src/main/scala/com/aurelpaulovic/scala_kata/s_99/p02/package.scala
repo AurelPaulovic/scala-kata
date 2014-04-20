@@ -63,7 +63,7 @@ package object p02 {
 	}
 	
 	/**
-	 * Return the last but one element of a list using a sliding iterator
+	 * Returns the last but one element of a list using a sliding iterator
 	 * 
 	 * @param ls the list
 	 */
@@ -74,5 +74,22 @@ package object p02 {
 	  
 	  if(window != null && window.size == 2) window.head
 	  else throw new NoSuchElementException
+	}
+	
+	/**
+	 * Returns the last but one element of a list using a foldLeft and a queue
+	 * 
+	 * @param ls the list
+	 */
+	def lastButOne07[A](ls: List[A]) = {
+	  val q = new scala.collection.mutable.Queue[A]()
+	  q += ls.head
+	  q += ls.tail.head
+	  
+	  (q /: (ls drop 2))((a, b) => {
+	    a += b
+	    a.dequeue
+	    a
+	  }).dequeue
 	}
 }
