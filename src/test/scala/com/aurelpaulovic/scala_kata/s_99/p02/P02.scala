@@ -26,7 +26,7 @@ class P02 extends UnitSpec {
 	}
 	
 	for((k, f) <- funcs) {
-	  "A " + k should "should throw a NoSuchElementException on an empty-list" in {
+	  "A " + k should "throw a NoSuchElementException on an empty-list" in {
 	    val list = List()
 	    
 	    intercept[NoSuchElementException] {
@@ -36,12 +36,20 @@ class P02 extends UnitSpec {
 	}
 	
 	for((k, f) <- funcs) {
-	  "A " + k should "should throw a NoSuchElementException on a list with single element" in {
+	  "A " + k should "throw a NoSuchElementException on a list with single element" in {
 	    val list = List(2)
 	    
 	    intercept[NoSuchElementException] {
 	      f(list)
 	    }
+	  }
+	}
+	
+	for((k, f) <- funcs) {
+	  "A " + k should "throw return the first element of a two element list" in {
+	    val list = List(5,9)
+	    
+	    assert(f(list) === 5)
 	  }
 	}
 }
