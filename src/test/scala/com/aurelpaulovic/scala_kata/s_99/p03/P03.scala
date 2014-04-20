@@ -11,11 +11,12 @@ class P03 extends UnitSpec {
 			("nth01", nth01(_,_)),
 			("nth02", nth02(_,_)),
 			("nth03", nth03(_,_)),
-			("nth04", nth04(_,_))
+			("nth04", nth04(_,_)),
+			("nth05", nth05(_,_))
 		)
 		
 	for((k, f) <- funcs) {
-	  "A " + k should "return the nth element of a list" in {
+	  k should "return the nth element of a list" in {
 	    val list = List(1,2,3,4,5,6)
 	    
 	    for(i <- 0 to 5) {
@@ -25,7 +26,7 @@ class P03 extends UnitSpec {
 	}
 	
 	for((k, f) <- funcs) {
-	  "A " + k should "throw a IndexOutOfBoundsException on an empty-list" in {
+	  k should "throw a IndexOutOfBoundsException on an empty-list" in {
 	    val list = List()
 	    
 	    intercept[IndexOutOfBoundsException] {
@@ -35,7 +36,7 @@ class P03 extends UnitSpec {
 	}
 	
 	for((k, f) <- funcs) {
-	  "A " + k should "throw a IndexOutOfBoundsException on an index smaller than zero" in {
+	  k should "throw a IndexOutOfBoundsException on an index smaller than zero" in {
 	    val list = List(1,2,3)
 	    
 	    intercept[IndexOutOfBoundsException] {
@@ -45,7 +46,7 @@ class P03 extends UnitSpec {
 	}
 	
 	for((k, f) <- funcs) {
-	  "A " + k should "throw a IndexOutOfBoundsException on an index greater than the number of elements in the list minus 1 " in {
+	  k should "throw a IndexOutOfBoundsException on an index greater than the number of elements in the list minus 1 " in {
 	    val list = List(1,2,3)
 	    
 	    intercept[IndexOutOfBoundsException] {

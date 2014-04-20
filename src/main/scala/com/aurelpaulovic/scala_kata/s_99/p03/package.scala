@@ -66,4 +66,19 @@ package object p03 {
 	  if(iter.hasNext) iter.next
 	  else throw new IndexOutOfBoundsException
 	}
+	
+	/**
+	 * Returns the nth element of a list using drop
+	 * 
+	 * @param n the index of the element (starting from 0)
+	 * @param ls the list
+	 */
+	def nth05[A](n: Int, ls: List[A]) = {
+	  if(n < 0) throw new IndexOutOfBoundsException
+	  
+	  ls.drop(n) match {
+	  	case Nil => throw new IndexOutOfBoundsException
+	  	case ele :: _ => ele
+	  }
+	}
 }
