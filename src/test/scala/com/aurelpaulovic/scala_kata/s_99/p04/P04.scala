@@ -10,7 +10,9 @@ class P0$ extends UnitSpec {
 	val funcs: List[(String, List[Any] => Int)] = List( // we could use type Any, but than we would have to assert using == ... I think there is no way to specify it better :(
 			("length01", length01(_)),
 			("length02", length02(_)),
-			("length03", length03(_))
+			("length03", length03(_)),
+			("length04", length04(_)),
+			("length05", length05(_))
 		)
 		
 	for((k, f) <- funcs) {
@@ -26,6 +28,14 @@ class P0$ extends UnitSpec {
 	    val list = List()
 	    
 	    assert(f(list) === 0)
+	  }
+	}
+	
+	for((k, f) <- funcs) {
+	  k should "return 1 for a list with one element" in {
+	    val list = List(null)
+	    
+	    assert(f(list) === 1)
 	  }
 	}
 }

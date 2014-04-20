@@ -29,7 +29,9 @@ package object p04 {
 	}
 	
 	/**
-	 * Return the length of a list using an inner tail-recursive function
+	 * Returns the length of a list using an inner tail-recursive function
+	 * 
+	 * @param ls the list
 	 */
 	def length03[A](ls: List[A]) = {
 	  @tailrec
@@ -39,5 +41,23 @@ package object p04 {
 	  }
 	  
 	  lengthInner(ls, 0)
+	}
+	
+	/**
+	 * Returns the length of a list using foldLeft
+	 * 
+	 * @param ls the list
+	 */
+	def length04[A](ls: List[A]) = (0 /: ls)((i, _) => i + 1)
+	
+	/**
+	 * Returns the length of a list using reduceLeft
+	 * 
+	 * @param ls the list
+	 */
+	def length05[A](ls: List[A]) = {
+	  (0 :: ls).reduceLeft((i, _) => i match {
+		  case x: Int => x + 1
+		}).asInstanceOf[Int] //reduceLeft returns supertype >: A so we need to cast it even though we know it will be Int
 	}
 }
