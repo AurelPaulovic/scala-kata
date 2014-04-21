@@ -6,7 +6,7 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
-class P0$ extends UnitSpec {
+class P04 extends UnitSpec {
 	val funcs: List[(String, List[Any] => Int)] = List( // we could use type Any, but than we would have to assert using == ... I think there is no way to specify it better :(
 			("length01", length01(_)),
 			("length02", length02(_)),
