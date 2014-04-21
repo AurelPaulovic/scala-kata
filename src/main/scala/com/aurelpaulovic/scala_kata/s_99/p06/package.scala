@@ -14,4 +14,15 @@ package object p06 {
 	 * @param ls the list
 	 */
 	def palindrome01[A](xs: List[A]) = xs == xs.reverse
+	
+	/**
+	 * Check if the list is a palindrome slicing the list in halfs and compare
+	 * 
+	 * @param ls the list
+	 */
+	def palindrome02[A](xs: List[A]) = {
+	  val len = xs.length
+	  
+	  xs.take((len / 2) + (len % 2)) == xs.drop(len / 2).reverse
+	}
 }

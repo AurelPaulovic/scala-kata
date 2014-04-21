@@ -8,7 +8,8 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class P06 extends UnitSpec {
 	val funcs: List[(String, List[Any] => Boolean)] = List( // we could use type Any, but than we would have to assert using == ... I think there is no way to specify it better :(
-			("palindrome01", palindrome01(_))
+			("palindrome01", palindrome01(_)),
+			("palindrome02", palindrome02(_))
 		)
 		
 	for((k, f) <- funcs) {
