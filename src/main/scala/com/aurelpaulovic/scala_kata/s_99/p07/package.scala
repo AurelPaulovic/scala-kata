@@ -8,6 +8,7 @@ package com.aurelpaulovic.scala_kata.s_99
  */
 
 import scala.annotation.tailrec
+import scala.collection.mutable.ArrayStack
 
 package object p07 {
 	/**
@@ -27,7 +28,7 @@ package object p07 {
 	 */
 	def flatten02(xs: List[Any]): List[Any] = {
 	  val buf = new scala.collection.mutable.ListBuffer[Any]
-	  val stack = new scala.collection.mutable.ArrayStack[Iterator[Any]]
+	  val stack = new ArrayStack[Iterator[Any]]
 	  var iter: scala.collection.Iterator[Any] = null
 	  stack push xs.iterator
 	  
@@ -61,5 +62,24 @@ package object p07 {
 	  }
 	  
 	  flattenInner(xs, List()).reverse
+	}
+	
+	/**
+	 * Flatten list using tail-recursive function and pattern matching with stack instead of list concat
+	 * 
+	 * @param xs the list
+	 */
+	def flatten04(xs: List[Any]): List[Any] = {
+	  @tailrec
+	  def flattenInner(xs: List[Any], stack: ArrayStack[List[Any]], acc: List[Any]): List[Any] = xs match {
+	    case Nil => 
+	      if (stack.isEmpty) acc
+	      else flattenInner(stack.pop(), stack, acc)
+	    case (sub: List[_]) :: tail => flattenInner(sub, stack += tail, acc)
+	    case ele :: tail => flattenInner(tail, stack, ele :: acc)
+
+	  }
+	  
+	  flattenInner(xs,new ArrayStack, List()).reverse
 	}
 }
