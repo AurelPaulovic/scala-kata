@@ -5,6 +5,8 @@ package com.aurelpaulovic.scala_kata.s_99
  * Example:
  * scala> palindrome(List(1, 4, 3, 4, 1))
  * res0: Boolean = true
+ * 
+ * (from: http://aperiodic.net/phil/scala/s-99/)
  */
 
 package object p06 {

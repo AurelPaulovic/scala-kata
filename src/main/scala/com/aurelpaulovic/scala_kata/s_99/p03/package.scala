@@ -6,6 +6,7 @@ package com.aurelpaulovic.scala_kata.s_99
  * scala> nth(2, List(0, 1, 4, 10, 5, 8))
  * Int = 4
  * 
+ * (from: http://aperiodic.net/phil/scala/s-99/)
  */
 
 import scala.annotation.tailrec

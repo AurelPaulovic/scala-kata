@@ -5,6 +5,8 @@ package com.aurelpaulovic.scala_kata.s_99
  * Example:
  * scala> length(List(1, 1, 2, 3, 5, 8))
  * res0: Int = 6
+ * 
+ * (from: http://aperiodic.net/phil/scala/s-99/)
  */
 
 import scala.annotation.tailrec

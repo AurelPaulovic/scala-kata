@@ -6,6 +6,7 @@ package com.aurelpaulovic.scala_kata.s_99
  * scala> last(List(1, 1, 2, 3, 5, 8))
  * Int = 5
  * 
+ * (from: http://aperiodic.net/phil/scala/s-99/)
  */
 
 import scala.annotation.tailrec
