@@ -53,4 +53,19 @@ package object p08 {
 	  case Nil => Nil
 	  case h :: tail => h :: compress03(tail.dropWhile(_ == h))
 	}
+	
+	/**
+	 * Eliminate consecutive duplicates using tail-recursion and dropWhile
+	 * 
+	 * @param ls the list
+	 */
+	def compress04[A](ls: List[A]): List[A] = {
+	  @tailrec
+	  def inner[A](ls: List[A], acc: List[A]): List[A] = ls match {
+	    case Nil => acc
+	    case h :: tail => inner(tail.dropWhile(_ == h), h :: acc)
+	  }
+	  
+	  inner(ls, List()).reverse
+	}
 }
