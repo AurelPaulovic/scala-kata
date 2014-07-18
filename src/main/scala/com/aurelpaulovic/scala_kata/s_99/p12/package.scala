@@ -13,7 +13,7 @@ package com.aurelpaulovic.scala_kata.s_99
 
 package object p12 {
 	/**
-	 * Decode a run-legth encoded list
+	 * Decode a run-length encoded list
 	 * 
 	 * @param ls the list
 	 */
