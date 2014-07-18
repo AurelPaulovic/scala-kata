@@ -8,7 +8,8 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class P14 extends UnitSpec {
 	val funcs: List[(String, List[Any] => List[Any])] = List(
-			("duplicate", duplicate(_))
+			("duplicate", duplicate(_)),
+			("duplicate02", duplicate02(_))
 		)
 		
 	for((k, f) <- funcs) {

@@ -10,4 +10,6 @@ package com.aurelpaulovic.scala_kata.s_99
 
 package object p14 {
   def duplicate[A](ls: List[A]): List[A] = ls.map((e) => Seq(e, e)).flatten
+  
+  def duplicate02[A](ls: List[A]): List[A] = ls flatMap { e => Seq(e, e) }
 }
