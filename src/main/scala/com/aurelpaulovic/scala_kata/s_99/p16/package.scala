@@ -8,6 +8,7 @@ package com.aurelpaulovic.scala_kata.s_99
  * res0: List[Symbol] = List('a, 'b, 'd, 'e, 'g, 'h, 'j, 'k)
  */
 
+import scala.annotation.tailrec
 package object p16 {
   def drop[A](n: Int, ls: List[A]): List[A] = n match {
     case 0 => ls
@@ -24,4 +25,20 @@ package object p16 {
 	      if ((len - idx) % n) != 0
       } yield e
   } 
+  
+  def drop02[A](n: Int, ls: List[A]): List[A] = {
+    @tailrec
+    def inner(i: Int, ls: List[A], acc: List[A]): List[A] = ls match {
+      case Nil => acc
+      case h :: tail if i == 1 => inner(n.abs, tail, acc)
+      case h :: tail => inner(i - 1, tail, h :: acc)
+    }
+    
+    n match {
+      case 0 => ls
+      case n if n > 0 => inner(n, ls, List()).reverse
+      case _ => inner(n.abs, ls.reverse, List())
+    }
+    
+  }
 }

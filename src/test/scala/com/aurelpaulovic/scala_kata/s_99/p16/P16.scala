@@ -8,7 +8,8 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class P16 extends UnitSpec {
 	val funcs: List[(String, (Int, List[Any]) => List[Any])] = List(
-			("drop", drop(_, _))
+			("drop", drop(_, _)),
+			("drop02", drop02(_, _))
 		)
 		
 	for((k, f) <- funcs) {
@@ -61,9 +62,9 @@ class P16 extends UnitSpec {
 	
 	for((k, f) <- funcs) {
 	  k should "return a list with every Nth element removed counted from the last element if the N is negative" in {
-	    val list = List('a, 'b, 'c, 'e, 'f, 'g, 'h, 'i)
+	    val list = List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i)
 	    
-	    assert(f(-2, list) === List('b, 'e, 'g, 'i))
+	    assert(f(-2, list) === List('a, 'c, 'e, 'g, 'i))
 	  }
 	}
 }
